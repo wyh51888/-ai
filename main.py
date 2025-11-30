@@ -1,34 +1,4 @@
 
-import asyncio
-import edge_tts
-import pygame
-from openai import OpenAI
-import os
-import time
-import requests 
-import json
-from colorama import Fore, Style, init
-
-# ================= 配置区域 (使用环境变量，不要在代码里写密钥) =================
-# 请在本机或部署环境设置下列环境变量：
-# - DEEPSEEK_API_KEY
-# - DEEPSEEK_BASE_URL
-# - FEISHU_APP_ID
-# - FEISHU_APP_SECRET
-# - FEISHU_APP_TOKEN
-# - FEISHU_TABLE_ID
-# 例如 (Windows PowerShell):
-#   $env:DEEPSEEK_API_KEY = 'sk-xxxxx'
-#   $env:DEEPSEEK_BASE_URL = 'https://api.deepseek.com'
-API_KEY = os.getenv("DEEPSEEK_API_KEY", "")
-BASE_URL = os.getenv("DEEPSEEK_BASE_URL", "https://api.deepseek.com")
-
-FEISHU_APP_ID = os.getenv("FEISHU_APP_ID", "")
-FEISHU_APP_SECRET = os.getenv("FEISHU_APP_SECRET", "")
-FEISHU_APP_TOKEN = os.getenv("FEISHU_APP_TOKEN", "")
-FEISHU_TABLE_ID = os.getenv("FEISHU_TABLE_ID", "")
-
-# ===========================================
 
 import asyncio
 import edge_tts
@@ -41,7 +11,18 @@ import json
 import re  # 引入正则库，用来精准抓取号码
 from colorama import Fore, Style, init
 
-# (删除了文件中重复的硬编码配置，改为统一从环境变量读取)
+# ================= 配置区域 =================
+
+API_KEY = "sk-32b438b35e8244268821df49c7f68257"
+BASE_URL = "https://api.deepseek.com"
+
+# 飞书配置
+FEISHU_APP_ID = "cli_a9a6b4f6ee381bdd"
+FEISHU_APP_SECRET = "ev8q6bCqqE5FScMr80z3Gbf4h5ABiLXN"
+FEISHU_APP_TOKEN = "NmM0b7F3PaH4EAsmpFIc7BIinde" # 你的Token
+FEISHU_TABLE_ID = "tbl8t9V1RuU2YoyH"            # 你的TableID
+
+# ===========================================
 
 init(autoreset=True)
 client = OpenAI(api_key=API_KEY, base_url=BASE_URL)
